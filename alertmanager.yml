@@ -1,16 +1,5 @@
 route:
-  group_by: [Alertname]
-  # Send all notifications to me.
-  receiver: alert
+  receiver: dummy
 
 receivers:
-- name: alert
-  email_configs:
-  - to: fixdens@gmail.com
-    from: fixdens@gmail.com
-    # Your smtp server address
-    smarthost: smtp.gmail.com:587
-##    auth_username: ***
-##    auth_identity: ***
-##    auth_password: ***
-
+  - name: dummy
