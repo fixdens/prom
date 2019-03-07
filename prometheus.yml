@@ -18,8 +18,8 @@ scrape_configs:
     scrape_interval: 5s
     ec2_sd_configs:
       - region: us-east-1
-        access_key: "${aws_iam_access_key.prom-key.id}"
-        secret_key: "${aws_iam_access_key.prom-key.secret}"
+##        access_key: "${aws_iam_access_key.prom-key.id}"
+##        secret_key: "${aws_iam_access_key.prom-key.secret}"
         port: 8080
 
 
@@ -34,8 +34,8 @@ scrape_configs:
     scrape_interval: 5s
     ec2_sd_configs:
       - region: us-east-1
-        access_key: "${aws_iam_access_key.prom-key.id}"
-        secret_key: "${aws_iam_access_key.prom-key.secret}"
+##        access_key: "${aws_iam_access_key.prom-key.id}"
+##        secret_key: "${aws_iam_access_key.prom-key.secret}"
         port: 9100
 
 
