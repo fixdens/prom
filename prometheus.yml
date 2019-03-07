@@ -48,11 +48,11 @@ scrape_configs:
 
 
   - job_name: 'ECSExporter'
-    scrape_interval: 5s
+    scrape_interval: 30s
     ec2_sd_configs:
       - region: us-east-1
-        access_key: "${aws_iam_access_key.prom-key.id}"
-        secret_key: "${aws_iam_access_key.prom-key.secret}"
+##        access_key: "${aws_iam_access_key.prom-key.id}"
+##        secret_key: "${aws_iam_access_key.prom-key.secret}"
         port: 9222
 
 
