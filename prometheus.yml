@@ -1,0 +1,69 @@
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+  evaluation_interval: 15s # By default, scrape targets every 15 seconds.
+
+rule_files:
+   - "alert.rules"
+
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+
+  - job_name: 'Prometheus-server'
+    scrape_interval: 5s
+    static_configs:
+         - targets: ['localhost:9090']
+
+
+  - job_name: 'Cadvisor'
+    scrape_interval: 5s
+    ec2_sd_configs:
+      - region: us-east-1
+        port: 8080
+
+
+    relabel_configs:
+      - source_labels: [__meta_ec2_tag_Cadvisor]
+        regex: .*
+        action: keep
+      - source_labels: [__meta_ec2_tag_Name]
+        target_label: Hostname
+
+  - job_name: 'NodeExporter'
+    scrape_interval: 5s
+    ec2_sd_configs:
+      - region: us-east-1
+        port: 9100
+
+
+    relabel_configs:
+      - source_labels: [__meta_ec2_tag_NodeExporter]
+        regex: .*
+        action: keep
+      - source_labels: [__meta_ec2_tag_Name]
+        target_label: Hostname
+
+
+  - job_name: 'ECSExporter'
+    scrape_interval: 5s
+    ec2_sd_configs:
+      - region: us-east-1
+        port: 9222
+
+
+    relabel_configs:
+      - source_labels: [__meta_ec2_tag_ECSExporter]
+        regex: .*
+        action: keep
+      - source_labels: [__meta_ec2_tag_Name]
+        target_label: Hostname
+
+
+
+
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - 'Alertmanager:9093'
+

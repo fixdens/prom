@@ -1,0 +1,16 @@
+##route:
+##  group_by: [Alertname]
+  # Send all notifications to me.
+##  receiver: alert
+
+##receivers:
+##- name: alert
+##  email_configs:
+##  - to: ***
+##    from: ***
+    # Your smtp server address
+##    smarthost: ***
+##    auth_username: ***
+##    auth_identity: ***
+##    auth_password: ***
+
